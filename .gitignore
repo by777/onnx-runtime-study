@@ -1,0 +1,5 @@
+*.onnx
+*.so
+*.dll
+*.a
+onnxruntime/
