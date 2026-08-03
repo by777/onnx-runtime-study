@@ -46,6 +46,7 @@
 *缓存的不是内存，是"名字 → 对象"的映射关系。这个映射一旦建立，每次 Run 就不用再查名字、不用再建对象
  *
  */
+#define _POSIX_C_SOURCE 199309L // 启用 clock_gettime/CLOCK_MONOTONIC, 必须在所有 include 之前!
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
