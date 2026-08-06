@@ -9,9 +9,20 @@
 #
 # 对比: 手动调度 1.145 ms
 # 运行: python 02_autotvm.py  (约 3-5 分钟)
-import os
 
-os.environ["TVM_NUM_THREADS"] = "16"  # ← 必须在 import tvm 之前
+# ========== 环境配置（必须在 import tvm 之前）==========
+# TVM 是源码编译的，不在 venv 里。用相对路径定位（工程放哪都能跑）
+import os
+import sys
+from pathlib import Path
+
+_REPO = Path(__file__).resolve().parent.parent   # onnx_runtime_ops/
+sys.path.insert(0, str(_REPO / "tvm-src" / "python"))  # TVM Python 包
+sys.path.insert(0, str(_REPO / "tvm-bin"))             # libtvm.so
+os.environ["LD_LIBRARY_PATH"] = str(_REPO / "tvm-bin") + os.pathsep + os.environ.get("LD_LIBRARY_PATH", "")
+os.environ["TVM_NUM_THREADS"] = "16"  # 固定线程数，跳过频率检测
+
+# ========== 正式 import ==========
 import time
 import numpy as np
 import tvm
@@ -31,6 +42,7 @@ def gemm_template():
     s = te.create_schedule(C.op)
     # ← 关键：调优器的"答卷"
     cfg = autotvm.get_config()  # 调优器会往cfg里填参数，然后调用模板
+
     # 注册 3 个可搜索参数（候选值列表）声明"哪些地方可变"
     # 三个参数 = 3 个维度，每个 10 个候选 → 搜索空间 = 10×10×10 = 1000 种组合
     cfg.define_knob("tile_i", [1, 2, 4, 8, 16, 32, 64, 128, 256, 512])  # i 分块候选
@@ -39,10 +51,8 @@ def gemm_template():
 
     # 可搜索参数1：i轴分块（.val 取调优器选中的值）
     io, ii = s[C].split(C.op.axis[0], cfg["tile_i"].val)
-
     # 可搜索参数2：j轴分块
     jo, ji = s[C].split(C.op.axis[1], cfg["tile_j"].val)
-
     # 可搜索参数3： 规约轴k分块
     ko, ki = s[C].split(k, cfg["tile_k"].val)
 
@@ -68,18 +78,35 @@ tuner = autotvm.tuner.XGBTuner(task)  # 用 XGBoost 模型做智能搜索
 n_trial = 200
 print(f"开始调优 {n_trial} 次...")
 tuner.tune(
-    n_trial=n_trial,  # 用 XGBoost 模型做智能搜索
+    n_trial=n_trial,
     measure_option=autotvm.measure_option(
         builder=autotvm.LocalBuilder(),  # 本地编译
-        runner=autotvm.LocalRunner(
-            number=5, repeat=1, min_repeat_ms=100
-        ),  # 实测每个候选的耗时
+        runner=autotvm.LocalRunner(number=5, repeat=1, min_repeat_ms=100),  # 实测耗时
     ),
     callbacks=[autotvm.callback.log_to_file(log_file)],
 )
 print("调优完成")
 
+
 # ------- 3. 使用最优配置编译并测试 -------- #
+# 从调优日志中找出最优配置并打印
+# load_from_file 是生成器，yield (MeasureInput, MeasureResult) 元组
+best_input = None
+best_cost = float("inf")
+for inp, res in autotvm.record.load_from_file(log_file):
+    cost = min(res.costs)  # MeasureResult.costs 是耗时列表（秒）
+    if cost < best_cost:
+        best_cost = cost
+        best_input = inp
+
+if best_input is None:   # 防御：日志为空或全部失败时不要崩
+    raise RuntimeError(f"日志 {log_file} 中没有有效的调优记录")
+
+tile_i = best_input.config["tile_i"].val
+tile_j = best_input.config["tile_j"].val
+tile_k = best_input.config["tile_k"].val
+print(f"最优方案: tile_i={tile_i}, tile_j={tile_j}, tile_k={tile_k}, 耗时={best_cost*1000:.3f}ms")
+
 with autotvm.apply_history_best(log_file):
     with tvm.target.Target("llvm"):
         s, arg_bufs = gemm_template()
