@@ -6,3 +6,4 @@
 onnxruntime/
 tmp/
 build/
+build_android/
