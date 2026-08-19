@@ -1,0 +1,4 @@
+    3464:	0d40c201 	ld1r	{v1.8b}, [x16]
+    3468:	0f08a400 	sxtl	v0.8h, v0.8b
+    346c:	0f08a421 	sxtl	v1.8h, v1.8b
+    3470:	4e61c000 	smull2	v0.4s, v0.8h, v1.8h
