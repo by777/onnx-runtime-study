@@ -179,3 +179,35 @@ per-channel 相对 per-tensor 的增益，取决于"各通道尺度差异有多�
 - near0 > 80% 或 kurt 极大 → 长尾分布 → 需 per-channel / 非对称 / 保 fp32
 
 **应用**：模型转 QNN 后若精度崩，先查量化敏感层（Add/Conv/Slice 等通道尺度差异大的层）的量化参数——对应转换工具给的每通道 scale/shift_count。
+
+---
+
+## 六、真实权重定标转换（实验 3：fsmn 的 conv_left / conv_right）
+
+**目标**：从真实模型权重出发，重走一遍"QNN 给 scale/shift_count"的完整链路，验证定标无损。
+
+### 数据来源
+
+用 onnx_layer_dump 工具 dump fsmn 的 conv 权重（`fsmn_out/weights/*.bin` + `*.meta.json`）：
+
+| 权重 | shape | 范围 |
+|---|---|---|
+| conv_left | (128, 1, 10, 1) | [-0.8877, 0.5221] |
+| conv_right | (128, 1, 2, 1) | [-1.1308, 0.8959] |
+
+C_out=128 → **128 组量化参数**（每输出通道一组）。
+
+### 完整链路（每通道）
+
+```
+通道权重 → max(|x|) → per-channel scale → 扫描法定标 → (multiplier, shift)
+```
+
+1. **per-channel scale**：每输出通道独立 `max(|x|)/127`。conv_left 128 个 scale 在 [0.0005, 0.0070]；conv_right 在 [0.0007, 0.0089]。**通道间差 ~14 倍** → 正是"per-tensor 被最大通道主导、小通道浪费阶梯"的实锤。
+2. **定标**：scale → multiplier/shift。conv_right 实测 multiplier ∈ [2019, 64563]，shift ∈ [19, 26]，全部落在 16bit 位宽内（max 64563 < 65535）。
+3. **验证定标无损**：对比两条反量化路径——
+   - 浮点版：`x_hat = q * scale`
+   - 定标版：`x_hat = q * multiplier / 2^shift`（用浮点除法，不是 `>>` 取整）
+   - 结果：conv_left 3.434e-03 vs 3.435e-03；conv_right 3.575e-03 vs 3.574e-03——**同量级，误差 < 1 个 quant 阶梯**。
+
+
