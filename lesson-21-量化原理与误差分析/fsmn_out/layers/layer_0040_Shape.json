@@ -1,0 +1,29 @@
+{
+  "idx": 40,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Shape",
+  "op_type": "Shape",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Transpose_output_0",
+      "shape": [
+        1,
+        128,
+        "T",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Shape_output_0",
+      "shape": [
+        4
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

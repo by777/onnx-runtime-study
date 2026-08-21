@@ -1,0 +1,15 @@
+{
+  "name": "backbone.fsmn.0.2.linear.bias",
+  "safe_name": "backbone_fsmn_0_2_linear_bias",
+  "shape": [
+    128
+  ],
+  "dtype": "float32",
+  "nbytes": 512,
+  "n_elems": 128,
+  "bin_file": "backbone_fsmn_0_2_linear_bias.bin",
+  "min": -0.6465624570846558,
+  "max": 1.2123008966445923,
+  "mean": 0.003484153188765049,
+  "sha256": "3b28cfc2d4a3265e266c14df4e74089b0eb016a12fab4fa6e27b258ba218dc38"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "/backbone/out_linear2/linear/MatMul_output_0",
+  "safe_name": "_backbone_out_linear2_linear_MatMul_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    410
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_out_linear2_linear_MatMul_output_0.bin",
+  "nbytes": 6560,
+  "n_elems": 1640,
+  "min": -8.180477142333984,
+  "max": 18.44620704650879,
+  "mean": -0.8437917828559875,
+  "sha256": "4815fb1aa553f1ba25f410670e3ef33a9a39f40aaa65e68b92e84400f644d581"
+}

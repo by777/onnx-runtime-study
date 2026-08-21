@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.0/fsmn.0.1/Concat_output_0",
+  "safe_name": "_backbone_fsmn_0_fsmn_0_1_Concat_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    15,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_0_fsmn_0_1_Concat_output_0.bin",
+  "nbytes": 7680,
+  "n_elems": 1920,
+  "min": -14.55361270904541,
+  "max": 26.51263427734375,
+  "mean": 0.052117157727479935,
+  "sha256": "9b6ceec98dcc36f8cfc5100acdec9f1da51468e65b48852f44952fc4256fd894"
+}

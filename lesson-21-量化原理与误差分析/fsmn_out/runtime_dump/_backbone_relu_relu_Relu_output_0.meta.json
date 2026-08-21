@@ -1,0 +1,18 @@
+{
+  "name": "/backbone/relu/relu/Relu_output_0",
+  "safe_name": "_backbone_relu_relu_Relu_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    128
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_relu_relu_Relu_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": 0.0,
+  "max": 25.249238967895508,
+  "mean": 1.485966682434082,
+  "sha256": "37d1fca6e2d567aad4a7479fad96e4a758ee2e1091abc7abf03ae4ea9f2115a1"
+}

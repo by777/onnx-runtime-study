@@ -1,0 +1,13 @@
+{
+  "name": "/backbone/fsmn.0/fsmn.0.1/Gather_output_0",
+  "safe_name": "_backbone_fsmn_0_fsmn_0_1_Gather_output_0",
+  "role": "intermediate",
+  "shape": [],
+  "dtype": "int64",
+  "bin_file": "_backbone_fsmn_0_fsmn_0_1_Gather_output_0.bin",
+  "nbytes": 8,
+  "n_elems": 1,
+  "min": 4,
+  "max": 4,
+  "sha256": "f0a0278e4372459cca6159cd5e71cfee638302a7b9ca9b05c34181ac0a65ac5d"
+}

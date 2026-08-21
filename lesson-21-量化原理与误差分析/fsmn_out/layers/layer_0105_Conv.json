@@ -1,0 +1,69 @@
+{
+  "idx": 105,
+  "name": "/backbone/fsmn.1/fsmn.1.1/conv_right/Conv",
+  "op_type": "Conv",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Slice_4_output_0",
+      "shape": [
+        "unk__20",
+        "unk__21",
+        "unk__24",
+        "unk__23"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "backbone.fsmn.1.1.conv_right.weight",
+      "shape": [
+        128,
+        1,
+        2,
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 1024,
+      "n_elems": 256,
+      "min": -0.6411842107772827,
+      "max": 0.5609963536262512,
+      "mean": -0.020778637379407883,
+      "sha256": "964515eeeb5741b830662df99947aeb05de89b8ef2e001cc9ef32352794fd669"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/conv_right/Conv_output_0",
+      "shape": [
+        "unk__20",
+        128,
+        "unk__25",
+        "unk__26"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "dilations": [
+      1,
+      1
+    ],
+    "group": 128,
+    "kernel_shape": [
+      2,
+      1
+    ],
+    "pads": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "strides": [
+      1,
+      1
+    ]
+  }
+}

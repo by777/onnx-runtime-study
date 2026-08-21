@@ -1,0 +1,18 @@
+{
+  "name": "output",
+  "safe_name": "output",
+  "role": "graph_output",
+  "shape": [
+    1,
+    4,
+    410
+  ],
+  "dtype": "float32",
+  "bin_file": "output.bin",
+  "nbytes": 6560,
+  "n_elems": 1640,
+  "min": 2.71521867489799e-12,
+  "max": 0.9999797344207764,
+  "mean": 0.0024390248581767082,
+  "sha256": "c8b44721c1c5e2ecd1ef6f6ba6242713f41accc7c83ac5c3479029e041c64447"
+}

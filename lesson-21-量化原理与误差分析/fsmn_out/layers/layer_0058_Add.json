@@ -1,0 +1,43 @@
+{
+  "idx": 58,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Add_2",
+  "op_type": "Add",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Add_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__5",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/conv_right/Conv_output_0",
+      "shape": [
+        "unk__6",
+        128,
+        "unk__11",
+        "unk__12"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Add_2_output_0",
+      "shape": [
+        "unk__6",
+        128,
+        "unk__13",
+        "unk__12"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

@@ -1,0 +1,15 @@
+{
+  "name": "global_cmvn.mean",
+  "safe_name": "global_cmvn_mean",
+  "shape": [
+    400
+  ],
+  "dtype": "float32",
+  "nbytes": 1600,
+  "n_elems": 400,
+  "bin_file": "global_cmvn_mean.bin",
+  "min": 8.311875343322754,
+  "max": 15.051215171813965,
+  "mean": 13.581188201904297,
+  "sha256": "c2fa09427463262aa19bead3387526bad0bc80bead226566ceba12a5089ecc0c"
+}

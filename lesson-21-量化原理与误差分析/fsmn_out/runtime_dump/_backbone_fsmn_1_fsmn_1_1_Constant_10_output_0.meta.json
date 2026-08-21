@@ -1,0 +1,15 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.1/Constant_10_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_1_Constant_10_output_0",
+  "role": "intermediate",
+  "shape": [
+    1
+  ],
+  "dtype": "int64",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_1_Constant_10_output_0.bin",
+  "nbytes": 8,
+  "n_elems": 1,
+  "min": 9,
+  "max": 9,
+  "sha256": "cbbd5f990c53684d7ae650b40fcb5656e02261b53da5f6a7d8c819c92f2828f8"
+}

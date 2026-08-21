@@ -1,0 +1,18 @@
+{
+  "name": "backbone.fsmn.0.1.conv_left.weight",
+  "safe_name": "backbone_fsmn_0_1_conv_left_weight",
+  "shape": [
+    128,
+    1,
+    10,
+    1
+  ],
+  "dtype": "float32",
+  "nbytes": 5120,
+  "n_elems": 1280,
+  "bin_file": "backbone_fsmn_0_1_conv_left_weight.bin",
+  "min": -0.8877065777778625,
+  "max": 0.5220739245414734,
+  "mean": -0.057725511491298676,
+  "sha256": "4356f56d2b5a941094b5f16ddb5dd84ed1c1bf2b81f2ff2b3d0081023acd7467"
+}

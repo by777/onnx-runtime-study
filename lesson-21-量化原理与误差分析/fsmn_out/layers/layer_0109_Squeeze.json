@@ -1,0 +1,39 @@
+{
+  "idx": 109,
+  "name": "/backbone/fsmn.1/fsmn.1.1/Squeeze",
+  "op_type": "Squeeze",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Transpose_1_output_0",
+      "shape": [
+        "unk__20",
+        "unk__26",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_23_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Squeeze_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

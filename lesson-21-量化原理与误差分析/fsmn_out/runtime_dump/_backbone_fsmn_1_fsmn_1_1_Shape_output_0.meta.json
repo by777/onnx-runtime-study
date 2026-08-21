@@ -1,0 +1,15 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.1/Shape_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_1_Shape_output_0",
+  "role": "intermediate",
+  "shape": [
+    4
+  ],
+  "dtype": "int64",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_1_Shape_output_0.bin",
+  "nbytes": 32,
+  "n_elems": 4,
+  "min": 1,
+  "max": 128,
+  "sha256": "59de509bf2ca562cbe9023c5930046b27dcd504f671c0b518731c0e47f8a30a0"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.1/Unsqueeze_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_1_Unsqueeze_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    1,
+    4,
+    128
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_1_Unsqueeze_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -10.41472339630127,
+  "max": 8.497682571411133,
+  "mean": -0.4117850661277771,
+  "sha256": "be28814cd13829e455460c5e16c8914b4c9a4140da7fe0df80c81c9ac70c5cf6"
+}

@@ -1,0 +1,64 @@
+{
+  "idx": 99,
+  "name": "/backbone/fsmn.1/fsmn.1.1/Slice_3",
+  "op_type": "Slice",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Concat_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__14",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Unsqueeze_1_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_17_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_15_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_18_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Slice_3_output_0",
+      "shape": [
+        "unk__20",
+        "unk__21",
+        "unk__22",
+        "unk__23"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

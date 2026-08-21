@@ -1,0 +1,44 @@
+{
+  "idx": 0,
+  "name": "/global_cmvn/Sub",
+  "op_type": "Sub",
+  "inputs": [
+    {
+      "name": "input",
+      "shape": [
+        1,
+        "T",
+        400
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "global_cmvn.mean",
+      "shape": [
+        400
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 1600,
+      "n_elems": 400,
+      "min": 8.311875343322754,
+      "max": 15.051215171813965,
+      "mean": 13.581188201904297,
+      "sha256": "c2fa09427463262aa19bead3387526bad0bc80bead226566ceba12a5089ecc0c"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/global_cmvn/Sub_output_0",
+      "shape": [
+        1,
+        "T",
+        400
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

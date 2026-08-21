@@ -1,0 +1,30 @@
+{
+  "idx": 64,
+  "name": "/backbone/fsmn.0/fsmn.0.3/relu/Relu",
+  "op_type": "Relu",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.2/linear/Add_output_0",
+      "shape": [
+        "unk__6",
+        "unk__13",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.3/relu/Relu_output_0",
+      "shape": [
+        "unk__6",
+        "unk__13",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

@@ -1,0 +1,45 @@
+{
+  "idx": 117,
+  "name": "/backbone/Concat",
+  "op_type": "Concat",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Slice_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__1",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Slice_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__15",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "r_cache",
+      "shape": [
+        1,
+        128,
+        "Concatr_cache_dim_2",
+        2
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "axis": -1
+  }
+}

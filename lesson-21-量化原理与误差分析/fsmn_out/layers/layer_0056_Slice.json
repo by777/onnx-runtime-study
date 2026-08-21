@@ -1,0 +1,64 @@
+{
+  "idx": 56,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Slice_4",
+  "op_type": "Slice",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Slice_3_output_0",
+      "shape": [
+        "unk__6",
+        "unk__7",
+        "unk__8",
+        "unk__9"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_20_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_21_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_19_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_22_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Slice_4_output_0",
+      "shape": [
+        "unk__6",
+        "unk__7",
+        "unk__10",
+        "unk__9"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

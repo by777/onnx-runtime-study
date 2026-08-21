@@ -1,0 +1,30 @@
+{
+  "idx": 16,
+  "name": "/backbone/relu/relu/Relu",
+  "op_type": "Relu",
+  "inputs": [
+    {
+      "name": "/backbone/in_linear2/linear/Add_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/relu/relu/Relu_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "/global_cmvn/Mul_output_0",
+  "safe_name": "_global_cmvn_Mul_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    400
+  ],
+  "dtype": "float32",
+  "bin_file": "_global_cmvn_Mul_output_0.bin",
+  "nbytes": 6400,
+  "n_elems": 1600,
+  "min": -2.7936813831329346,
+  "max": -0.9611411690711975,
+  "mean": -2.0251963138580322,
+  "sha256": "6b9763e403059dd18753fbd7c808d5384cbbe15acc2db96eb4dfe8845d89508d"
+}

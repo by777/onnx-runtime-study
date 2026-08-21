@@ -1,0 +1,39 @@
+{
+  "idx": 19,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Unsqueeze",
+  "op_type": "Unsqueeze",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.0/linear/MatMul_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Unsqueeze_output_0",
+      "shape": [
+        1,
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

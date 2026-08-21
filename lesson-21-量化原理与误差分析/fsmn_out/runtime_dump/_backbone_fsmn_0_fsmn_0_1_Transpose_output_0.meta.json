@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.0/fsmn.0.1/Transpose_output_0",
+  "safe_name": "_backbone_fsmn_0_fsmn_0_1_Transpose_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    4,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_0_fsmn_0_1_Transpose_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -14.55361270904541,
+  "max": 26.51263427734375,
+  "mean": 0.17169657349586487,
+  "sha256": "1f7f51c2ed33f35e72d3b94ac1a4034830776ec83f64b9ed426bd8f3ba912232"
+}

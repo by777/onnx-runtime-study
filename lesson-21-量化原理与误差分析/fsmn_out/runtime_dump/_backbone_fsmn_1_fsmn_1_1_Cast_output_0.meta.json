@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.1/Cast_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_1_Cast_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    11,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_1_Cast_output_0.bin",
+  "nbytes": 5632,
+  "n_elems": 1408,
+  "min": -3.617396116256714,
+  "max": 3.994169235229492,
+  "mean": 0.04069480672478676,
+  "sha256": "08704b89752fea06243229f45bc34b80d17d85254ec4862deae9d1134f979c3b"
+}

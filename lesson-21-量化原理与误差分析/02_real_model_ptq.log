@@ -1,0 +1,70 @@
+共 121 个张量
+
+  /backbone/Slice_1_output_0           shape=(1, 128, 11, 1)    near0= 3.1% kurt=    3.2 snr_pt=  41.1dB snr_pc=  47.1dB
+  /backbone/Slice_output_0             shape=(1, 128, 11, 1)    near0= 2.9% kurt=    3.2 snr_pt=  40.6dB snr_pc=  46.9dB
+  /backbone/fsmn.0/fsmn.0.0/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 3.7% kurt=    5.3 snr_pt=  40.2dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.1/Add_2_output_0 shape=(1, 128, 4, 1)     near0=15.6% kurt=   14.4 snr_pt=  35.8dB snr_pc=  50.6dB
+  /backbone/fsmn.0/fsmn.0.1/Add_output_0 shape=(1, 128, 4, 1)     near0=15.4% kurt=   14.2 snr_pt=  36.4dB snr_pc=  50.6dB
+  /backbone/fsmn.0/fsmn.0.1/Cast_output_0 shape=(1, 128, 11, 1)    near0= 2.9% kurt=    3.2 snr_pt=  40.6dB snr_pc=  46.9dB
+  /backbone/fsmn.0/fsmn.0.1/Concat_output_0 shape=(1, 128, 15, 1)    near0=18.2% kurt=   17.5 snr_pt=  34.8dB snr_pc=  47.0dB
+  /backbone/fsmn.0/fsmn.0.1/Slice_1_output_0 shape=(1, 128, 13, 1)    near0=20.2% kurt=   27.1 snr_pt=  32.8dB snr_pc=  45.3dB
+  /backbone/fsmn.0/fsmn.0.1/Slice_2_output_0 shape=(1, 128, 4, 1)     near0=13.5% kurt=   10.2 snr_pt=  37.4dB snr_pc=  51.4dB
+  /backbone/fsmn.0/fsmn.0.1/Slice_3_output_0 shape=(1, 128, 6, 1)     near0=10.0% kurt=    7.7 snr_pt=  38.4dB snr_pc=  51.4dB
+  /backbone/fsmn.0/fsmn.0.1/Slice_4_output_0 shape=(1, 128, 5, 1)     near0= 7.8% kurt=    6.5 snr_pt=  39.2dB snr_pc=  52.3dB
+  /backbone/fsmn.0/fsmn.0.1/Slice_output_0 shape=(1, 128, 11, 1)    near0=15.8% kurt=   13.4 snr_pt=  36.0dB snr_pc=  48.5dB
+  /backbone/fsmn.0/fsmn.0.1/Squeeze_output_0 shape=(1, 4, 128)        near0=15.6% kurt=   14.4 snr_pt=  35.8dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.1/Transpose_1_output_0 shape=(1, 1, 4, 128)     near0=15.6% kurt=   14.4 snr_pt=  35.8dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.1/Transpose_output_0 shape=(1, 128, 4, 1)     near0= 3.7% kurt=    5.3 snr_pt=  40.2dB snr_pc=  53.5dB
+  /backbone/fsmn.0/fsmn.0.1/Unsqueeze_output_0 shape=(1, 1, 4, 128)     near0= 3.7% kurt=    5.3 snr_pt=  40.2dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.1/conv_left/Conv_output_0 shape=(1, 128, 4, 1)     near0=23.0% kurt=   19.2 snr_pt=  35.2dB snr_pc=  49.0dB
+  /backbone/fsmn.0/fsmn.0.1/conv_right/Conv_output_0 shape=(1, 128, 4, 1)     near0=11.7% kurt=    7.9 snr_pt=  40.7dB snr_pc=  52.0dB
+  /backbone/fsmn.0/fsmn.0.2/linear/Add_output_0 shape=(1, 4, 128)        near0= 5.1% kurt=    3.5 snr_pt=  41.9dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.2/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 4.5% kurt=    3.5 snr_pt=  41.6dB snr_pc=   nandB
+  /backbone/fsmn.0/fsmn.0.3/relu/Relu_output_0 shape=(1, 4, 128)        near0=78.9% kurt=   20.2 snr_pt=  40.7dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.0/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 3.5% kurt=    3.6 snr_pt=  41.8dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.1/Add_2_output_0 shape=(1, 128, 4, 1)     near0=10.2% kurt=   10.8 snr_pt=  36.1dB snr_pc=  51.4dB
+  /backbone/fsmn.1/fsmn.1.1/Add_output_0 shape=(1, 128, 4, 1)     near0=11.5% kurt=   21.4 snr_pt=  33.5dB snr_pc=  50.5dB
+  /backbone/fsmn.1/fsmn.1.1/Cast_output_0 shape=(1, 128, 11, 1)    near0= 3.1% kurt=    3.2 snr_pt=  41.1dB snr_pc=  47.1dB
+  /backbone/fsmn.1/fsmn.1.1/Concat_output_0 shape=(1, 128, 15, 1)    near0= 6.8% kurt=    8.1 snr_pt=  37.2dB snr_pc=  44.6dB
+  /backbone/fsmn.1/fsmn.1.1/Slice_1_output_0 shape=(1, 128, 13, 1)    near0= 7.3% kurt=    9.4 snr_pt=  37.0dB snr_pc=  44.5dB
+  /backbone/fsmn.1/fsmn.1.1/Slice_2_output_0 shape=(1, 128, 4, 1)     near0= 5.7% kurt=    4.8 snr_pt=  41.2dB snr_pc=  49.6dB
+  /backbone/fsmn.1/fsmn.1.1/Slice_3_output_0 shape=(1, 128, 6, 1)     near0= 4.9% kurt=    4.8 snr_pt=  40.4dB snr_pc=  48.5dB
+  /backbone/fsmn.1/fsmn.1.1/Slice_4_output_0 shape=(1, 128, 5, 1)     near0= 4.4% kurt=    4.2 snr_pt=  41.1dB snr_pc=  49.4dB
+  /backbone/fsmn.1/fsmn.1.1/Slice_output_0 shape=(1, 128, 11, 1)    near0= 6.7% kurt=    7.0 snr_pt=  38.3dB snr_pc=  45.7dB
+  /backbone/fsmn.1/fsmn.1.1/Squeeze_output_0 shape=(1, 4, 128)        near0=10.2% kurt=   10.8 snr_pt=  36.1dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.1/Transpose_1_output_0 shape=(1, 1, 4, 128)     near0=10.2% kurt=   10.8 snr_pt=  36.1dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.1/Transpose_output_0 shape=(1, 128, 4, 1)     near0= 3.5% kurt=    3.6 snr_pt=  41.8dB snr_pc=  50.8dB
+  /backbone/fsmn.1/fsmn.1.1/Unsqueeze_output_0 shape=(1, 1, 4, 128)     near0= 3.5% kurt=    3.6 snr_pt=  41.8dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.1/conv_left/Conv_output_0 shape=(1, 128, 4, 1)     near0= 5.7% kurt=    5.5 snr_pt=  39.9dB snr_pc=  50.0dB
+  /backbone/fsmn.1/fsmn.1.1/conv_right/Conv_output_0 shape=(1, 128, 4, 1)     near0=20.1% kurt=   13.1 snr_pt=  36.6dB snr_pc=  50.5dB
+  /backbone/fsmn.1/fsmn.1.2/linear/Add_output_0 shape=(1, 4, 128)        near0= 8.0% kurt=   19.9 snr_pt=  35.2dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.2/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 8.8% kurt=   20.8 snr_pt=  34.7dB snr_pc=   nandB
+  /backbone/fsmn.1/fsmn.1.3/relu/Relu_output_0 shape=(1, 4, 128)        near0=39.3% kurt=    5.4 snr_pt=  42.6dB snr_pc=   nandB
+  /backbone/in_linear1/linear/Add_output_0 shape=(1, 4, 128)        near0=22.7% kurt=   48.8 snr_pt=  34.2dB snr_pc=   nandB
+  /backbone/in_linear1/linear/MatMul_output_0 shape=(1, 4, 128)        near0=22.1% kurt=   48.0 snr_pt=  34.0dB snr_pc=   nandB
+  /backbone/in_linear2/linear/Add_output_0 shape=(1, 4, 128)        near0= 8.0% kurt=    6.4 snr_pt=  39.8dB snr_pc=   nandB
+  /backbone/in_linear2/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 9.0% kurt=    6.3 snr_pt=  40.1dB snr_pc=   nandB
+  /backbone/out_linear1/linear/Add_output_0 shape=(1, 4, 128)        near0= 3.5% kurt=    3.4 snr_pt=  42.6dB snr_pc=   nandB
+  /backbone/out_linear1/linear/MatMul_output_0 shape=(1, 4, 128)        near0= 3.7% kurt=    3.4 snr_pt=  42.7dB snr_pc=   nandB
+  /backbone/out_linear2/linear/Add_output_0 shape=(1, 4, 410)        near0= 5.4% kurt=    9.6 snr_pt=  36.0dB snr_pc=   nandB
+  /backbone/out_linear2/linear/MatMul_output_0 shape=(1, 4, 410)        near0= 5.6% kurt=    9.5 snr_pt=  36.1dB snr_pc=   nandB
+  /backbone/relu/relu/Relu_output_0    shape=(1, 4, 128)        near0=58.4% kurt=   24.0 snr_pt=  39.4dB snr_pc=   nandB
+  /global_cmvn/Mul_output_0            shape=(1, 4, 400)        near0= 0.0% kurt=    4.8 snr_pt=  50.3dB snr_pc=   nandB
+  /global_cmvn/Sub_output_0            shape=(1, 4, 400)        near0= 0.0% kurt=    5.6 snr_pt=  50.3dB snr_pc=   nandB
+
+=== 量化最敏感的层 (snr_pt < 25dB) ===
+  无 —— 所有层 snr_pt >= 25dB，整体可量化
+
+=== per-channel 增益最大的层 (snr_pc - snr_pt > 5dB) ===
+  /backbone/fsmn.1/fsmn.1.1/Add_output_0 pt=33.5dB -> pc=50.5dB  (+16.9)
+  /backbone/fsmn.1/fsmn.1.1/Add_2_output_0 pt=36.1dB -> pc=51.4dB  (+15.3)
+  /backbone/fsmn.0/fsmn.0.1/Add_2_output_0 pt=35.8dB -> pc=50.6dB  (+14.8)
+  /backbone/fsmn.0/fsmn.0.1/Add_output_0 pt=36.4dB -> pc=50.6dB  (+14.1)
+  /backbone/fsmn.1/fsmn.1.1/conv_right/Conv_output_0 pt=36.6dB -> pc=50.5dB  (+14.0)
+  /backbone/fsmn.0/fsmn.0.1/Slice_2_output_0 pt=37.4dB -> pc=51.4dB  (+13.9)
+  /backbone/fsmn.0/fsmn.0.1/conv_left/Conv_output_0 pt=35.2dB -> pc=49.0dB  (+13.8)
+  /backbone/fsmn.0/fsmn.0.1/Transpose_output_0 pt=40.2dB -> pc=53.5dB  (+13.3)
+  /backbone/fsmn.0/fsmn.0.1/Slice_4_output_0 pt=39.2dB -> pc=52.3dB  (+13.1)
+  /backbone/fsmn.0/fsmn.0.1/Slice_3_output_0 pt=38.4dB -> pc=51.4dB  (+12.9)
+
+分析结果已保存: fsmn_out/quant_analysis.json

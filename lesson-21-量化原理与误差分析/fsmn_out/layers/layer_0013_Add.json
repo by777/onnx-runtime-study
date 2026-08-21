@@ -1,0 +1,44 @@
+{
+  "idx": 13,
+  "name": "/backbone/in_linear1/linear/Add",
+  "op_type": "Add",
+  "inputs": [
+    {
+      "name": "backbone.in_linear1.linear.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 512,
+      "n_elems": 128,
+      "min": -2.1711297035217285,
+      "max": 1.8474849462509155,
+      "mean": -0.07297030091285706,
+      "sha256": "f2c2f7de96d658f03863ef8c213ee5b45b992c94a461bf7970de1ecbcfaca4c5"
+    },
+    {
+      "name": "/backbone/in_linear1/linear/MatMul_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/in_linear1/linear/Add_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

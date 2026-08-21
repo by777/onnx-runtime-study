@@ -1,0 +1,45 @@
+{
+  "idx": 62,
+  "name": "/backbone/fsmn.0/fsmn.0.2/linear/MatMul",
+  "op_type": "MatMul",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Squeeze_output_0",
+      "shape": [
+        "unk__6",
+        "unk__13",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "onnx::MatMul_233",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 65536,
+      "n_elems": 16384,
+      "min": -0.8581506013870239,
+      "max": 1.0466660261154175,
+      "mean": -0.0026945185381919146,
+      "sha256": "91ebe1066511ed964fb84d7b7dd23c18eeca3829d8c56cda400cf6725b4dc0ab"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.2/linear/MatMul_output_0",
+      "shape": [
+        "unk__6",
+        "unk__13",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

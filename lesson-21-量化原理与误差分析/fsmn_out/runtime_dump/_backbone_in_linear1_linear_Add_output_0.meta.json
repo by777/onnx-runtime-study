@@ -1,0 +1,18 @@
+{
+  "name": "/backbone/in_linear1/linear/Add_output_0",
+  "safe_name": "_backbone_in_linear1_linear_Add_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    128
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_in_linear1_linear_Add_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -30.671926498413086,
+  "max": 5.016048431396484,
+  "mean": -0.29560452699661255,
+  "sha256": "438e1bf378cd5e6b7c07041df6ab101ff9d8e5cac9978f9534e001d145006808"
+}

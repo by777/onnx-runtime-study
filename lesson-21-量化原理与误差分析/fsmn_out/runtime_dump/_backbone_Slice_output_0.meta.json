@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/Slice_output_0",
+  "safe_name": "_backbone_Slice_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    11,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_Slice_output_0.bin",
+  "nbytes": 5632,
+  "n_elems": 1408,
+  "min": -3.1759772300720215,
+  "max": 3.9249415397644043,
+  "mean": 0.008633720688521862,
+  "sha256": "76daeb781cb0d2ac49ae839b6265a6c3aeb25cc90c151d1dba49dd31d7ab1b8b"
+}

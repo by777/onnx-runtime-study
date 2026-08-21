@@ -1,0 +1,15 @@
+{
+  "name": "/backbone/Constant_1_output_0",
+  "safe_name": "_backbone_Constant_1_output_0",
+  "role": "intermediate",
+  "shape": [
+    1
+  ],
+  "dtype": "int64",
+  "bin_file": "_backbone_Constant_1_output_0.bin",
+  "nbytes": 8,
+  "n_elems": 1,
+  "min": 0,
+  "max": 0,
+  "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+}

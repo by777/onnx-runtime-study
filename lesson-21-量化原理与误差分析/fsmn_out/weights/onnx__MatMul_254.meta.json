@@ -1,0 +1,16 @@
+{
+  "name": "onnx::MatMul_254",
+  "safe_name": "onnx__MatMul_254",
+  "shape": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "nbytes": 65536,
+  "n_elems": 16384,
+  "bin_file": "onnx__MatMul_254.bin",
+  "min": -1.4334608316421509,
+  "max": 1.2401584386825562,
+  "mean": 0.0003429289208725095,
+  "sha256": "ace02b6e1009b59b6f1769a3ba9c3a3657b415c03ba5bffabd138cdb52e9bc7f"
+}

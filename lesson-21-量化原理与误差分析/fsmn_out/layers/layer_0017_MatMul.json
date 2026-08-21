@@ -1,0 +1,45 @@
+{
+  "idx": 17,
+  "name": "/backbone/fsmn.0/fsmn.0.0/linear/MatMul",
+  "op_type": "MatMul",
+  "inputs": [
+    {
+      "name": "/backbone/relu/relu/Relu_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "onnx::MatMul_213",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 65536,
+      "n_elems": 16384,
+      "min": -0.8625675439834595,
+      "max": 0.9144001603126526,
+      "mean": 0.0008621835149824619,
+      "sha256": "e6731c6a1c7f0020275ad84ea625be0bb743f7f1dcaa3b2870c0626dc350ff27"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.0/linear/MatMul_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

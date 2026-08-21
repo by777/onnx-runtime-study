@@ -1,0 +1,18 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.3/relu/Relu_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_3_relu_Relu_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    128
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_3_relu_Relu_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": 0.0,
+  "max": 6.549709320068359,
+  "mean": 0.9993000030517578,
+  "sha256": "b0863680b8495d015eba6622e54ea12d3cc8da4c89db4794804563367bb87c7d"
+}

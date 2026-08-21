@@ -1,0 +1,18 @@
+{
+  "name": "input",
+  "safe_name": "input",
+  "role": "graph_input",
+  "shape": [
+    1,
+    4,
+    400
+  ],
+  "dtype": "float32",
+  "bin_file": "input.bin",
+  "nbytes": 6400,
+  "n_elems": 1600,
+  "min": -3.7572836875915527,
+  "max": 3.385791778564453,
+  "mean": 0.009992492385208607,
+  "sha256": "701c7726f1c48ee7c735809cdd0aa7d03288558c51e2d6b3057162868e19a944"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "global_cmvn.istd",
+  "safe_name": "global_cmvn_istd",
+  "shape": [
+    400
+  ],
+  "dtype": "float32",
+  "nbytes": 1600,
+  "n_elems": 400,
+  "bin_file": "global_cmvn_istd.bin",
+  "min": 0.1435866504907608,
+  "max": 0.1557750552892685,
+  "mean": 0.1492612659931183,
+  "sha256": "82abaaf2193885921345059afb83eec83fc76aa2b827125f5b9900fb21d5a176"
+}

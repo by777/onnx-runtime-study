@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.0/fsmn.0.1/Slice_2_output_0",
+  "safe_name": "_backbone_fsmn_0_fsmn_0_1_Slice_2_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    4,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_0_fsmn_0_1_Slice_2_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -14.378290176391602,
+  "max": 25.96124839782715,
+  "mean": 0.05305011570453644,
+  "sha256": "732d770fd565ad835cb2ec7829f0e06c5b2dcb4d50cb4eed75a79d5b259f658a"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.1/Add_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_1_Add_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    4,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_1_Add_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -9.075946807861328,
+  "max": 3.238381862640381,
+  "mean": -0.0735192745923996,
+  "sha256": "4efa00fb05f9a6d7b108c93064f013981534bf6955fa03ab1d33f0e0e84c6e43"
+}

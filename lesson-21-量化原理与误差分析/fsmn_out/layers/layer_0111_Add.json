@@ -1,0 +1,44 @@
+{
+  "idx": 111,
+  "name": "/backbone/fsmn.1/fsmn.1.2/linear/Add",
+  "op_type": "Add",
+  "inputs": [
+    {
+      "name": "backbone.fsmn.1.2.linear.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 512,
+      "n_elems": 128,
+      "min": -0.44640350341796875,
+      "max": 1.0391381978988647,
+      "mean": 0.127200186252594,
+      "sha256": "9c696625a2aac3ea6fa242345c63a569d6aaa562b293fcad98a0b9c1c5f9cd9a"
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.2/linear/MatMul_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.2/linear/Add_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "/backbone/fsmn.0/fsmn.0.1/conv_left/Conv_output_0",
+  "safe_name": "_backbone_fsmn_0_fsmn_0_1_conv_left_Conv_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    128,
+    4,
+    1
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_0_fsmn_0_1_conv_left_Conv_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -15.291406631469727,
+  "max": 10.37529468536377,
+  "mean": -0.01344543881714344,
+  "sha256": "840de897f06868d842fb02775bdeeef4898d4468a3cee13897b62fea8de126c1"
+}

@@ -1,0 +1,64 @@
+{
+  "idx": 6,
+  "name": "/backbone/Slice",
+  "op_type": "Slice",
+  "inputs": [
+    {
+      "name": "cache",
+      "shape": [
+        1,
+        128,
+        11,
+        2
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/Constant_1_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/Constant_2_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/Constant_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/Constant_3_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/Slice_output_0",
+      "shape": [
+        1,
+        128,
+        11,
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

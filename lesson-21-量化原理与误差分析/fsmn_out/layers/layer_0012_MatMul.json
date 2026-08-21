@@ -1,0 +1,45 @@
+{
+  "idx": 12,
+  "name": "/backbone/in_linear1/linear/MatMul",
+  "op_type": "MatMul",
+  "inputs": [
+    {
+      "name": "/global_cmvn/Mul_output_0",
+      "shape": [
+        1,
+        "T",
+        400
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "onnx::MatMul_211",
+      "shape": [
+        400,
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 204800,
+      "n_elems": 51200,
+      "min": -0.5841464996337891,
+      "max": 0.7362439036369324,
+      "mean": 0.000293795921606943,
+      "sha256": "be625f5224b8a1f36ebfdee3cb1fcaae11e0685ad8159f93b747541e82905bac"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/in_linear1/linear/MatMul_output_0",
+      "shape": [
+        1,
+        "T",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

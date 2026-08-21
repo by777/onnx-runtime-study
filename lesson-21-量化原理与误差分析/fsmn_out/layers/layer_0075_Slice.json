@@ -1,0 +1,64 @@
+{
+  "idx": 75,
+  "name": "/backbone/fsmn.1/fsmn.1.1/Slice",
+  "op_type": "Slice",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Concat_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__14",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_2_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_3_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_1_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_4_output_0",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Slice_output_0",
+      "shape": [
+        1,
+        128,
+        "unk__15",
+        1
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

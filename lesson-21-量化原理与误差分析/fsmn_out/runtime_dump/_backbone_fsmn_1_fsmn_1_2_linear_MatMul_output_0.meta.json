@@ -1,0 +1,18 @@
+{
+  "name": "/backbone/fsmn.1/fsmn.1.2/linear/MatMul_output_0",
+  "safe_name": "_backbone_fsmn_1_fsmn_1_2_linear_MatMul_output_0",
+  "role": "intermediate",
+  "shape": [
+    1,
+    4,
+    128
+  ],
+  "dtype": "float32",
+  "bin_file": "_backbone_fsmn_1_fsmn_1_2_linear_MatMul_output_0.bin",
+  "nbytes": 2048,
+  "n_elems": 512,
+  "min": -18.56119155883789,
+  "max": 6.758016586303711,
+  "mean": 0.24083545804023743,
+  "sha256": "f226309fbde71a3dbb4b243bdaf75a6f3bba4d0dab9fed077612dcdb427854c6"
+}

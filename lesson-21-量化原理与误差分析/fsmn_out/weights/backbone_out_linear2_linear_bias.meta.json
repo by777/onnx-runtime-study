@@ -1,0 +1,15 @@
+{
+  "name": "backbone.out_linear2.linear.bias",
+  "safe_name": "backbone_out_linear2_linear_bias",
+  "shape": [
+    410
+  ],
+  "dtype": "float32",
+  "nbytes": 1640,
+  "n_elems": 410,
+  "bin_file": "backbone_out_linear2_linear_bias.bin",
+  "min": -0.3657248616218567,
+  "max": 0.5369487404823303,
+  "mean": -0.006041131913661957,
+  "sha256": "a4ad8463ad115cc3ee24a7e4daea411840ac5bc937f6ae59ab0b892a8193b85c"
+}

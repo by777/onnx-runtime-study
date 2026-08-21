@@ -1,0 +1,19 @@
+{
+  "name": "cache",
+  "safe_name": "cache",
+  "role": "graph_input",
+  "shape": [
+    1,
+    128,
+    11,
+    2
+  ],
+  "dtype": "float32",
+  "bin_file": "cache.bin",
+  "nbytes": 11264,
+  "n_elems": 2816,
+  "min": -3.617396116256714,
+  "max": 3.994169235229492,
+  "mean": 0.0246642604470253,
+  "sha256": "1213559e6ee60013818ab628fd1217653f961a8cbe3218220879f8e9dc8b91e7"
+}

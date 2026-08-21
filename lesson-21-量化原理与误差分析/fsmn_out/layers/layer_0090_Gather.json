@@ -1,0 +1,32 @@
+{
+  "idx": 90,
+  "name": "/backbone/fsmn.1/fsmn.1.1/Gather",
+  "op_type": "Gather",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Shape_output_0",
+      "shape": [
+        4
+      ],
+      "dtype": "int64",
+      "is_initializer": false
+    },
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Constant_13_output_0",
+      "shape": [],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Gather_output_0",
+      "shape": [],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "axis": 0
+  }
+}

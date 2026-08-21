@@ -1,0 +1,21 @@
+{
+  "idx": 41,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Constant_13",
+  "op_type": "Constant",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Constant_13_output_0",
+      "shape": [],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "value": {
+      "type": "tensor",
+      "shape": [],
+      "dtype": "int64"
+    }
+  }
+}

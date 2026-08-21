@@ -1,0 +1,32 @@
+{
+  "idx": 118,
+  "name": "/Softmax",
+  "op_type": "Softmax",
+  "inputs": [
+    {
+      "name": "/backbone/out_linear2/linear/Add_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        410
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "shape": [
+        1,
+        "T",
+        410
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "axis": 2
+  }
+}

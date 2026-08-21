@@ -1,0 +1,45 @@
+{
+  "idx": 115,
+  "name": "/backbone/out_linear2/linear/MatMul",
+  "op_type": "MatMul",
+  "inputs": [
+    {
+      "name": "/backbone/out_linear1/linear/Add_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    },
+    {
+      "name": "onnx::MatMul_256",
+      "shape": [
+        128,
+        410
+      ],
+      "dtype": "float32",
+      "is_initializer": true,
+      "nbytes": 209920,
+      "n_elems": 52480,
+      "min": -0.4001615643501282,
+      "max": 0.39171209931373596,
+      "mean": -0.0005498316022567451,
+      "sha256": "74b2c75d1e09ed74f85da14d2c585494805bc2e123ec4711d638e8bf2893d9c4"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/out_linear2/linear/MatMul_output_0",
+      "shape": [
+        "unk__20",
+        "unk__27",
+        410
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

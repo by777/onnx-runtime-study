@@ -1,0 +1,22 @@
+{
+  "idx": 45,
+  "name": "/backbone/fsmn.0/fsmn.0.1/Neg",
+  "op_type": "Neg",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Add_1_output_0",
+      "shape": [],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.0/fsmn.0.1/Neg_output_0",
+      "shape": [],
+      "dtype": "int64",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {}
+}

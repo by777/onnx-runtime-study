@@ -1,0 +1,39 @@
+{
+  "idx": 107,
+  "name": "/backbone/fsmn.1/fsmn.1.1/Transpose_1",
+  "op_type": "Transpose",
+  "inputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Add_2_output_0",
+      "shape": [
+        "unk__20",
+        128,
+        "unk__27",
+        "unk__26"
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "/backbone/fsmn.1/fsmn.1.1/Transpose_1_output_0",
+      "shape": [
+        "unk__20",
+        "unk__26",
+        "unk__27",
+        128
+      ],
+      "dtype": "float32",
+      "is_initializer": false
+    }
+  ],
+  "attrs": {
+    "perm": [
+      0,
+      3,
+      2,
+      1
+    ]
+  }
+}
