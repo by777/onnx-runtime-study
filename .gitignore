@@ -8,3 +8,4 @@ tmp/
 build/
 build_android/
 tvm-src/build_android/
+tvm-src/build_android
