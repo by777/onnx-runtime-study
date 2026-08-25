@@ -1,6 +1,6 @@
 #!/bin/bash
 . ../lesson-05-多输入多输出/.venv/bin/activate
-python 00_gen_model.py
+python A0_gen_model.py
 # ONNX→MNN
 ../mnn-src/build/MNNConvert -f ONNX --modelFile dwconv.onnx --MNNModel dwconv.mnn 
 # MNN 模型→JSON

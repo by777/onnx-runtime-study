@@ -1,5 +1,5 @@
-// 04_trace.cpp
-// Lesson 22 实验1: 用 MNN 官方回调 API 跟踪逐层调用链 (带算子类型)
+// A4_trace.cpp
+// Lesson 22 实验A: 用 MNN 官方回调 API 跟踪逐层调用链 (带算子类型)
 //
 // 这个程序回答一个问题: MNN 推理时, 模型里的算子到底按什么顺序执行?
 // 方法: 在 MNN 的执行流程上挂两个钩子(回调), 每层执行前/后各触发一次,
@@ -19,8 +19,8 @@
 //   - MNN 官方提供了回调钩子 = 白盒调试的正路, 零源码改动
 //   - 这是"在公司不能改框架源码时怎么观察框架行为"的标准技能
 //
-// 编译: g++ -std=c++11 04_trace.cpp -I../mnn-src/include -L../mnn-src/build -lMNN -o 04_trace
-// 运行: LD_LIBRARY_PATH=../mnn-src/build ./04_trace
+// 编译: g++ -std=c++11 A4_trace.cpp -I../mnn-src/include -L../mnn-src/build -lMNN -o A4_trace
+// 运行: LD_LIBRARY_PATH=../mnn-src/build ./A4_trace
 
 #include <MNN/Interpreter.hpp> // MNN 主 API: Interpreter 类, 回调类型定义
 #include <MNN/Tensor.hpp>      // MNN 张量: Tensor 类, 拿 shape/数据
@@ -33,9 +33,9 @@ int main(int argc, char *argv[])
 {
     const char *modelPath = "dwconv.mnn";
     if (argc > 1)
-        modelPath = argv[1]; // 支持 ./04_trace 其它.mnn
+        modelPath = argv[1]; // 支持 ./A4_trace 其它.mnn
 
-    // ── ① 加载模型 (和 03_run.cpp 一样, 略) ──
+    // ── ① 加载模型 (和 A3_run.cpp 一样, 略) ──
     auto interpreter = Interpreter::createFromFile(modelPath);
     if (!interpreter)
     {
@@ -44,13 +44,13 @@ int main(int argc, char *argv[])
     }
     std::cout << "[0] 模型加载成功" << std::endl;
 
-    // ── ② 创建会话 (和 03_run.cpp 一样) ──
+    // ── ② 创建会话 (和 A3_run.cpp 一样) ──
     // ScheduleConfig: 会话配置, type=MNN_FORWARD_CPU 指定 CPU 后端
     ScheduleConfig sConfig;
     sConfig.type = MNN_FORWARD_CPU;
     auto session = interpreter->createSession(sConfig);
 
-    // ── ③ 写入输入数据 (和 03_run.cpp 一样) ──
+    // ── ③ 写入输入数据 (和 A3_run.cpp 一样) ──
     auto inputTensor = interpreter->getSessionInput(session, "input");
     std::vector<float> inputData(1 * 3 * 8 * 8);
     for (int i = 0; i < inputData.size(); i++)
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
     // runSessionWithCallBackInfo: 带回调的推理, 代替 runSession
     interpreter->runSessionWithCallBackInfo(session, before, after);
 
-    // ── ④ 取输出 (和 03_run.cpp 一样) ──
+    // ── ④ 取输出 (和 A3_run.cpp 一样) ──
     auto outputTensor = interpreter->getSessionOutput(session, "output");
     auto outPtr = outputTensor->host<float>();
     std::cout << "[2] 输出前 16 个值: ";

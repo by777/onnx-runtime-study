@@ -1,5 +1,5 @@
-# 00_gen_dwconv_onnx.py
-# Lesson 22 实验1: 生成一个含 depthwise conv 的最小 onnx 模型
+# A0_gen_model.py
+# Lesson 22 实验A: 生成一个含 depthwise conv 的最小 onnx 模型
 # 用于跟踪 MNN 的 CPUConvolutionDepthwise 调用链
 # depthwise conv: 输入 [1,3,8,8] → 权重 [3,1,3,3] → 输出 [1,3,6,6]
 # 注意: ONNX 里 depthwise = group=C_in 的 Conv

@@ -1,6 +1,6 @@
-// 01_run_dwconv.cpp
-// Lesson 22 实验1: 用 MNN C++ API 跑 depthwise conv 模型
-// 编译: g++ -std=c++11 01_run_dwconv.cpp -I../mnn-src/include -L../mnn-src/build -lMNN -o 01_run_dwconv
+// A3_run.cpp
+// Lesson 22 实验A: 用 MNN C++ API 跑 depthwise conv 模型
+// 编译: g++ -std=c++11 A3_run.cpp -I../mnn-src/include -L../mnn-src/build -lMNN -o A3_run
 
 #include <MNN/Interpreter.hpp>
 #include <MNN/Tensor.hpp>

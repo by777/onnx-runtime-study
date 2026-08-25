@@ -1,14 +1,14 @@
-# Lesson 22 实验1: MNN depthwise conv 调用链
+# Lesson 22 实验A: MNN depthwise conv 调用链
 
 ## 文件清单（全部跑通）
 
 | 文件 | 作用 | 怎么验证的 |
 |---|---|---|
-| `00_gen_model.py` | 生成 depthwise conv 的 onnx | 跑完打印"生成 dwconv.onnx" |
-| `01_convert_check.sh` | ONNX→MNN + 确认算子类型 | 输出见下 |
-| `02_build.sh` | 编译 + 运行 C++ 推理 | 编译零报错 + 推理成功 |
-| `03_run.cpp` | MNN C++ 推理程序 | 0.012ms，输出 16 个值 |
-| `04_trace.cpp` | 逐层调用链跟踪（回调钩子） | 见第 4 节 |
+| `A0_gen_model.py` | 生成 depthwise conv 的 onnx | 跑完打印"生成 dwconv.onnx" |
+| `A1_convert_check.sh` | ONNX→MNN + 确认算子类型 | 输出见下 |
+| `A2_build.sh` | 编译 + 运行 C++ 推理 | 编译零报错 + 推理成功 |
+| `A3_run.cpp` | MNN C++ 推理程序 | 0.012ms，输出 16 个值 |
+| `A4_trace.cpp` | 逐层调用链跟踪（回调钩子） | 见第 4 节 |
 
 ## 我实际跑出来的结果
 
@@ -19,12 +19,12 @@
 权重 [3,1,3,3]
 ```
 
-`00_gen_model.py` 里的关键：
+`A0_gen_model.py` 里的关键：
 - 输入 `[1, 3, 8, 8]` = N C H W
 - 权重 `[3, 1, 3, 3]` = OC IC KH KW（IC=1 → depthwise）
 - `group=3` 使 `C_in/group = 3/3 = 1`，权重 IC 维 = 1 → depthwise
 
-### 2. 转换后确认算子类型（01_convert_check.sh 输出）
+### 2. 转换后确认算子类型（A1_convert_check.sh 输出）
 
 ```
 2 "type": "ConvertTensor"         ← 布局转换 (NCHW → NC4HW4)
@@ -35,7 +35,7 @@
 **这说明**：ONNX 的 `Conv(group=3)` 被 MNN 转换器识别成了 `ConvolutionDepthwise`，
 写进了 .mnn 文件。
 
-### 3. 推理跑通（02_build.sh 输出）
+### 3. 推理跑通（A2_build.sh 输出）
 
 ```
 [0] 模型加载成功
@@ -47,7 +47,7 @@
  0.0535782 0.200425
 ```
 
-### 4. 调用链验证（04_trace.cpp，回调钩子实测）
+### 4. 调用链验证（A4_trace.cpp，回调钩子实测）
 
 **目标**：亲眼看 MNN 推理时算子按什么顺序执行——运行时证据，不是读源码猜的。
 
@@ -97,4 +97,4 @@
 
 3. **MNN 转换时插入了布局转换**：`ConvertTensor`（NCHW→NC4HW4）出现在 conv
    前后。说明 MNN 内部用 NC4HW4（通道按 4 打包）布局计算——这是 MNN 的一个
-   重要特征，具体原因实验 2 接触源码时再深挖。
+   重要特征，具体原因实验B 接触源码时再深挖。
