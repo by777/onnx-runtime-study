@@ -1,5 +1,5 @@
 #!/bin/bash
-. ../lesson-05-多输入多输出/.venv/bin/activate
+. ../lesson-05-ORT-多输入多输出/.venv/bin/activate
 python A0_gen_model.py
 # ONNX→MNN
 ../mnn-src/build/MNNConvert -f ONNX --modelFile dwconv.onnx --MNNModel dwconv.mnn 
