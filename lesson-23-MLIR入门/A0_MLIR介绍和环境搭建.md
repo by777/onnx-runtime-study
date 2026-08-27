@@ -125,7 +125,7 @@ ninja mlir_runner_utils mlir_c_runner_utils
 
 ## 三、第一个程序
 
-### 3.1 `hello.mlir`（认识 IR 长什么样）
+### 3.1 `A1_hello.mlir`（认识 IR 长什么样）
 
 ```mlir
 // 最简 MLIR 模块：一个函数，返回常量 42
@@ -149,7 +149,7 @@ module {
 cd lesson-23-MLIR入门
 
 # parse + 格式化打印
-../mlir-src/build/bin/mlir-opt hello.mlir
+../mlir-src/build/bin/mlir-opt A1_hello.mlir
 # 期望：%0 被重命名成 %c42_i32 后原样输出
 ```
 
@@ -157,14 +157,14 @@ cd lesson-23-MLIR入门
 
 ```bash
 # --canonicalize：常量折叠、死代码消除等
-../mlir-src/build/bin/mlir-opt --canonicalize hello.mlir
+../mlir-src/build/bin/mlir-opt --canonicalize A1_hello.mlir
 ```
 
 > `mlir-opt` 是瑞士军刀：读 `.mlir` → 跑 pass → 输出 IR。这是你观察"优化前后 IR 变化"的核心工具，对应 TVM 的 pass。
 
 ### 3.3 完整执行链路（7+5）
 
-新建 `add.mlir`：
+新建 `A2_add.mlir`：
 
 ```mlir
 // 完整执行测试：7 + 5 = 12
@@ -184,11 +184,11 @@ MLIR_RUNNER=../mlir-src/build/bin/mlir-cpu-runner
 RUNNER_LIB=../mlir-src/build/lib
 
 # step 1: 降到 LLVM IR（观察降级结果）
-$MLIR_OPT add.mlir \
+$MLIR_OPT A2_add.mlir \
   -pass-pipeline="builtin.module(func.func(convert-arith-to-llvm),convert-func-to-llvm,reconcile-unrealized-casts)"
 
 # step 2: JIT 执行，期望输出 12
-$MLIR_OPT add.mlir \
+$MLIR_OPT A2_add.mlir \
   -pass-pipeline="builtin.module(func.func(convert-arith-to-llvm),convert-func-to-llvm,reconcile-unrealized-casts)" \
   | $MLIR_RUNNER -e main -entry-point-result=i32 \
       -shared-libs=$RUNNER_LIB/libmlir_runner_utils.so \
@@ -211,7 +211,7 @@ $MLIR_OPT add.mlir \
 > **最关键的一句话**：`.mlir` 文件不是"代码"，是**"图"的文字描述**。
 > MLIR 在内存里维护的是一张计算图（就像你熟悉的 ONNX 图、TVM 的 Relay 图），`.mlir` 文本只是这张图被打印出来的样子。读它 = 读一张打印出来的图。
 
-### 4.1 用 C 语言对照读懂 `hello.mlir`
+### 4.1 用 C 语言对照读懂 `A1_hello.mlir`
 
 ```mlir
 module {                                    // 一张图的边界
@@ -235,7 +235,7 @@ module {                                    // 一张图的边界
 
 **为什么要有方言前缀？** 因为同一件事不同方言都能干——"函数"这个概念 `func` 方言有、`llvm` 方言也有（`llvm.func`）。前缀就是告诉读者"这行字用的是哪套词典"。
 
-### 4.2 用 C 对照读懂 `add.mlir`
+### 4.2 用 C 对照读懂 `A2_add.mlir`
 
 ```mlir
 %0 = arith.constant 7 : i32       // int tmp0 = 7;
@@ -277,7 +277,7 @@ C 里 `x = 5; x = 6;` 可以改 x。**MLIR 里不行**——这叫 **SSA（静�
 
 | 命令 | 本质 | 类比 |
 |---|---|---|
-| `mlir-opt hello.mlir` | 读图 + 打印图（会格式化，`%0`→`%c42_i32`） | `clang -S` 打印汇编给人看 |
+| `mlir-opt A1_hello.mlir` | 读图 + 打印图（会格式化，`%0`→`%c42_i32`） | `clang -S` 打印汇编给人看 |
 | `mlir-opt --canonicalize` | 跑优化 pass（常量折叠/死代码消除/统一写法） | TVM 的 `fold_constant`、ORT 的图优化 |
 | `mlir-opt ... -pass-pipeline="..."` | 跑一串 lowering pass，把高级方言翻译成 LLVM | **你 T41 的"宏+脚本翻译 asm"** |
 | `mlir-cpu-runner` | JIT 编译并执行 lower 后的 IR | 链接器 + 运行器 |
@@ -298,12 +298,12 @@ return             →  llvm.return             （高级返回 → LLVM 返回�
 MLIR_OPT := ../mlir-src/build/bin/mlir-opt     # 定义变量（:= 赋值）
 PIPELINE := builtin.module(...)                # 给长命令起短名，类似 C 的 #define
 ...
-01_add: 01_add.mlir                            # 规则：目标: 依赖
-	$(MLIR_OPT) 01_add.mlir -pass-pipeline="$(PIPELINE)"   # $(X) = 引用变量
+A2_add: A2_add.mlir                            # 规则：目标: 依赖
+	$(MLIR_OPT) A2_add.mlir -pass-pipeline="$(PIPELINE)"   # $(X) = 引用变量
 ```
 
 - `$(PIPELINE)` 就是展开成变量的值——**拼写不一致（POPLINE vs PIPELINE）会展开成空**，导致 `-pass-pipeline=""` 报错（本课踩过的坑）
-- `01_add: 01_add.mlir` = 如果依赖文件存在就执行缩进的行
+- `A2_add: A2_add.mlir` = 如果依赖文件存在就执行缩进的行
 - `.PHONY` = 声明目标是命令名而非文件名
 
 ### 4.6 符号速查表
@@ -323,7 +323,7 @@ PIPELINE := builtin.module(...)                # 给长命令起短名，类似 
 | `convert-arith-to-llvm` | 高级方言→LLVM | 你 T41 的脚本翻译 asm |
 | `mlir-cpu-runner` | JIT 编译执行 | 链接器+运行器 |
 
-**现在回头看 `hello.mlir`，它其实就等价于**：
+**现在回头看 `A1_hello.mlir`，它其实就等价于**：
 
 ```c
 // 一个什么都不干、返回 42 的程序
@@ -347,7 +347,7 @@ MLIR 只是把它写成图 + 类型标注的形式，方便编译器在中间做
 
 ```bash
 # pass 例子 1：canonicalize —— 优化（让图更简单）
-mlir-opt --canonicalize hello.mlir
+mlir-opt --canonicalize A1_hello.mlir
 
 # pass 例子 2：convert-arith-to-llvm —— 降级（让图更接近机器）
 mlir-opt ... -pass-pipeline="...convert-arith-to-llvm..."
@@ -404,7 +404,7 @@ MLIR 的整个设计就是"**图 + 一串 pass**"：
 
 | 命令 | pass | 你看到的输出变化 |
 |---|---|---|
-| `mlir-opt --canonicalize hello.mlir` | canonicalize | `%0` → `%c42_i32`（命名规范化），结构不变 |
+| `mlir-opt --canonicalize A1_hello.mlir` | canonicalize | `%0` → `%c42_i32`（命名规范化），结构不变 |
 | step1 lower 链 | convert-arith/func-to-llvm | `arith.addi` → `llvm.mlir.constant(12)`（**7+5 被折叠成 12**） |
 | step1 lower 链 | reconcile-unrealized-casts | 清理降级留下的临时 cast |
 

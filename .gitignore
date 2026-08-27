@@ -9,4 +9,4 @@ build/
 build_android/
 tvm-src/
 mnn-src/
-mlir-src/
+# mlir-src/
