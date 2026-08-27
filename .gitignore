@@ -7,5 +7,6 @@ onnxruntime/
 tmp/
 build/
 build_android/
-tvm-src/build_android/
-tvm-src/build_android
+tvm-src/
+mnn-src/
+mlir-src/
