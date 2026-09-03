@@ -1,4 +1,4 @@
-# Lesson 23-01：MLIR 基础与环境搭建
+# Lesson 23-A：MLIR 基础与环境搭建
 
 ## 一、MLIR 基础概念
 
