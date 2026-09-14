@@ -36,8 +36,15 @@ def sigmoid(x):
 
 # ---------------- 方案A：tanh 自己建表 ----------------
 def gen_tanh_table(xmax=4.0, segs=8, q=12):
-    h = xmax / segs
-    return [round(math.tanh(k * h) * (1 << q)) for k in range(segs + 1)]
+    h = xmax / segs                    # 段宽
+    scale = 1 << q                     # 定点标尺 2^q
+
+    table = []
+    for k in range(segs + 1):          # 8 段 = 9 个端点
+        x_k = k * h                    # 第 k 个结点的 x 值
+        value = math.tanh(x_k)         # 该点的函数真值 tanh(x_k)
+        table.append(round(value * scale))   # 转定点 + 四舍五入
+    return table
 
 
 def tanh_self_lookup(x, table, xmax=4.0):
@@ -54,8 +61,15 @@ def tanh_self_lookup(x, table, xmax=4.0):
 
 # ---------------- 方案B：复用 sigmoid 表 ----------------
 def gen_sigmoid_table(xmax=8.0, segs=8, q=12):
-    h = xmax / segs
-    return [round(sigmoid(k * h) * (1 << q)) for k in range(segs + 1)]
+    h = xmax / segs                    # 段宽
+    scale = 1 << q                     # 定点标尺 2^q
+
+    table = []
+    for k in range(segs + 1):          # 8 段 = 9 个端点
+        x_k = k * h                    # 第 k 个结点的 x 值
+        value = sigmoid(x_k)           # 该点的函数真值 σ(x_k)
+        table.append(round(value * scale))   # 转定点 + 四舍五入
+    return table
 
 
 def sigmoid_lookup(x, table, xmax=8.0):

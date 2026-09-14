@@ -54,7 +54,15 @@ def gen_rcp_table(segs=8, q=12):
     端点 m_k = 1 + k/8（k=0..8），即 1.0, 1.125, ..., 2.0 共 9 个。
     表项 = round((1/m_k) · 2^q)，即端点处倒数的 Q12 定点值。
     """
-    return [round((1.0 / (1.0 + k / segs)) * (1 << q)) for k in range(segs + 1)]
+    width = 1.0                        # 区间 [1,2) 的宽 = 2 - 1
+    scale = 1 << q                     # 定点标尺 2^q
+
+    table = []
+    for k in range(segs + 1):          # 8 段 = 9 个端点
+        m_k = 1.0 + k / segs * width   # 第 k 个结点的 m 值
+        value = 1.0 / m_k              # 该点的函数真值 1/m_k
+        table.append(round(value * scale))   # 转定点 + 四舍五入
+    return table
 
 
 def rcp_lookup(x, table):

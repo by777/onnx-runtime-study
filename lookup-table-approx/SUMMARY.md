@@ -34,6 +34,12 @@ softmax 的 `exp` 在无 FPU / 超越函数昂贵的环境（T41 NPU、Cortex-A 
 | 6 | `step6_sigmoid.py` | sigmoid 怎么查表（对称性 + 饱和） | 对称性砍半表；误差 ∝ 段宽²×曲率，比 exp 大 ~6 倍 |
 | 7 | `step7_tanh.py` | tanh 自己建表 vs 复用 sigmoid | 实测几乎打平：段宽减半收益被曲率大 8 倍抵消（ε∝h²·\|f''\|） |
 | 8 | `step8_reciprocal.py` | 1/x 查倒数表 + 牛顿迭代 | 查表给初值 + 迭代二次收敛，2 轮到 float 全精度 |
+| 9 | `step9_linear_counterexample.py` | y=2x+1 建表反例 | 建表三步模板；线性函数查表纯属浪费 |
+| 10 | `step10_rsqrt.py` | 1/√x 查表 + 牛顿迭代 | 指数减半（拆偶数）+ 平方收敛（系数 3/2），全程无除法；末尾 `trace_one(4.1)` 逐步打印完整链路 |
+
+> ⚠️ **step10 勘误（2026-09-14）**：早期版本头部注释写"误差**立方**衰减、比 1/x 更快"，**是错的**。
+> rsqrt 的牛顿迭代是**平方收敛** $d\to-\tfrac32d^2$，系数 $3/2$ 比 1/x 的 $1$ **更差**。
+> rsqrt 迭代的价值在**无除法**，不在收敛阶。详见 `公式推导.md` 末尾章节。
 
 **建议顺序**：1 → 2 → 3 → 4 → 5 → 6 连着跑。每个脚本结尾都有小结。
 
@@ -80,7 +86,7 @@ exp(x) 太贵（无 FPU）
 - [ ] **2：超越函数全家桶**：sigmoid/tanh（softmax 的变体）、`ln`、`1/x`、`rsqrt`——
       各自的 range reduction 不同（倒数查表、对数查表配合），统一方法学
       （✅ sigmoid：`step6_sigmoid.py`；✅ tanh：`step7_tanh.py` 对比；
-       ✅ 1/x：`step8_reciprocal.py` 查表+牛顿迭代）
+       ✅ 1/x：`step8_reciprocal.py`；✅ rsqrt：`step10_rsqrt.py` 查表+牛顿）
 - [ ] **定点除法**：softmax 分母的 `1/S` 也查倒数表 + 一次乘法修正（牛顿迭代）
       （1/x 已做 `step8_reciprocal.py`，是它的地基）
 - [ ] **block floating point**：logits 动态范围大时按块统一指数，避免逐项下溢

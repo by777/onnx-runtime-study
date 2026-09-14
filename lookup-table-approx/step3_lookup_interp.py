@@ -71,8 +71,13 @@ def main():
         fb_mid = int(round(xm * 256))
         e_mid = abs(exp2_lookup_lerp(fb_mid, table) / (1 << Q) - 2.0 ** xm)
         # 段内最大（扫描 32 级）
-        emax_seg = max(abs(exp2_lookup_lerp(seg * 32 + j, table) / (1 << Q)
-                           - 2.0 ** ((seg * 32 + j) / 256)) for j in range(32))
+        emax_seg = 0.0
+        for j in range(32):
+            fb_j = seg * 32 + j
+            approx_j = exp2_lookup_lerp(fb_j, table) / (1 << Q)
+            truth_j = 2.0 ** (fb_j / 256)
+            if abs(approx_j - truth_j) > emax_seg:
+                emax_seg = abs(approx_j - truth_j)
         print(f"{seg:>3} [{x0:.3f},{x1:.3f}) {e_lo:>14.2e} {e_mid:>10.2e} {emax_seg:>10.2e}")
     print("    → 端点误差≈0（表项精确采样），段中误差≈段内最大 → 误差确由'弦vs曲线'主导")
 

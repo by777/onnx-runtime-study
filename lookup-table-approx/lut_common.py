@@ -22,7 +22,14 @@ def gen_exp2_table(segs=SEGS, q=Q):
     端点 x_k = k/segs，表项 = round(2^{x_k} · 2^q)。
     共 segs+1 项：8 段共享端点，所以是 9 个值不是 16 个。
     """
-    return [round((2.0 ** (k / segs)) * (1 << q)) for k in range(segs + 1)]
+    scale = 1 << q                     # 定点标尺 2^q（Q12 → 4096）
+
+    table = []
+    for k in range(segs + 1):          # 8 段 = 9 个端点
+        x_k = k / segs                 # 第 k 个结点的 x 值 ∈ [0,1]
+        value = 2.0 ** x_k             # 该点的函数真值 2^{x_k}
+        table.append(round(value * scale))   # 转定点（×4096）+ 四舍五入
+    return table
 
 
 def exp2_lookup_lerp(f_byte, table, frac_bits=FRAC_BITS):
@@ -50,7 +57,11 @@ def exp2_lookup_lerp(f_byte, table, frac_bits=FRAC_BITS):
 
 def table_to_c(table, name="exp2_table", suffix="LUT"):
     """把表打印成 C 静态数组（给以后接 C/板子代码用）。"""
+    parts = []
+    for v in table:
+        parts.append(str(v))
+
     lines = [f"static const int16_t {name}[{len(table)}] = {{"]
-    lines.append("    " + ", ".join(f"{v}" for v in table))
+    lines.append("    " + ", ".join(parts))
     lines.append("};")
     return "\n".join(lines)

@@ -37,8 +37,14 @@ def main():
     table = gen_exp2_table()
     print(f"\n[2] gen_exp2_table() 直接生成: {table}")
     print(f"    表项数 = {SEGS}+1 = {len(table)}（8 段共享端点）")
-    ratios = [table[i + 1] / table[i] for i in range(len(table) - 1)]
-    print(f"    相邻比值 ≈ {[f'{r:.4f}' for r in ratios]}")
+    ratios = []
+    for i in range(len(table) - 1):
+        ratios.append(table[i + 1] / table[i])
+
+    ratio_parts = []
+    for r in ratios:
+        ratio_parts.append(f"{r:.4f}")
+    print(f"    相邻比值 ≈ {' '.join(ratio_parts)}")
     print("    → 比值≈1.0905 = 2^(1/8)。这是 2^x 的固有性质，不是巧合。")
 
     # ---------- 3. Q 的选择如何影响表项与误差 ----------
@@ -48,7 +54,10 @@ def main():
         tb = gen_exp2_table(q=q)
         # 量化误差：round 最多偏 0.5 LSB
         max_qerr = 0.5 / (1 << q)
-        s = " ".join(f"{v}" for v in tb)
+        parts = []
+        for v in tb:
+            parts.append(str(v))
+        s = " ".join(parts)
         print(f"{q:>4} {1<<q:>8} {s:>42} {max_qerr:.2e}")
     print("    Q12: 表项 ≤ 8192，int16 装得下（18 字节）；Q16 要 int32（36 字节）。")
     print("    取舍：Q 越高舍入误差越小，但表项越宽、乘加中间位越宽。")

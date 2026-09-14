@@ -39,8 +39,15 @@ def sigmoid(x):
 def gen_sigmoid_table(segs=SEGS, q=Q):
     """对 x∈[0,8] 均匀 segs 段建表，端点 x_k = k·(X_MAX/segs)。
     表项 = round(σ(x_k)·2^q)。共 segs+1 项。"""
-    h = X_MAX / segs
-    return [round(sigmoid(k * h) * (1 << q)) for k in range(segs + 1)]
+    h = X_MAX / segs                   # 段宽
+    scale = 1 << q                     # 定点标尺 2^q
+
+    table = []
+    for k in range(segs + 1):          # 8 段 = 9 个端点
+        x_k = k * h                    # 第 k 个结点的 x 值
+        value = sigmoid(x_k)           # 该点的函数真值 σ(x_k)
+        table.append(round(value * scale))   # 转定点 + 四舍五入
+    return table
 
 
 def sigmoid_lookup(x, table):

@@ -69,7 +69,9 @@ def main():
         a, b = k / SEGS, (k + 1) / SEGS
         lo, hi = table8[k], table8[k + 1]
         # 在段内采样，误差 e(x)=连线-f(x) ∈ [0, e_mid]（凸函数弦在上）
-        xs = [a + (b - a) * j / 64 for j in range(65)]
+        xs = []
+        for j in range(65):            # 段内 65 个采样点
+            xs.append(a + (b - a) * j / 64)
         errs = []
         for x in xs:
             w = (x - a) / (b - a)
@@ -79,7 +81,9 @@ def main():
         return e_mid / 2.0         # 下移一半 → 段内两端误差=中间误差
 
     # 构造平移后的表（每个端点值都参与两段，用相邻段平移的平均近似）
-    shifts = [seg_best_shift(k) for k in range(SEGS)]
+    shifts = []
+    for k in range(SEGS):
+        shifts.append(seg_best_shift(k))
     new_table = []
     for k in range(SEGS + 1):
         sleft = shifts[k - 1] if k > 0 else shifts[0]
@@ -110,7 +114,11 @@ def main():
     # 8段理想线性插值 err≈1.7e-3；若只有 3bit 查表没有插值则 err≈ 半段宽 ≈ 4e-2
     err_ideal_lerp = err8
     # 无插值（纯取左端点）误差 ≈ 段内 max|f(x)-f(a)|（f 单调增，最大在段右端）
-    e_nointerp = max(f2((k + 1) / SEGS) - f2(k / SEGS) for k in range(SEGS))
+    e_nointerp = 0.0
+    for k in range(SEGS):
+        jump = f2((k + 1) / SEGS) - f2(k / SEGS)
+        if jump > e_nointerp:
+            e_nointerp = jump
     print(f"    纯查表不插值(8段) 误差 ≈ {e_nointerp:.4f}")
     print(f"    5bit插值(32级)    误差 ≈ {err_ideal_lerp:.6f}")
     print(f"    32级插值已经把误差压到线性化地板附近；再加插值级数几乎无收益")

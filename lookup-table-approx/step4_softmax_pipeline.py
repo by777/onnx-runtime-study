@@ -49,16 +49,26 @@ def fixed_softmax(logits):
         fb_list.append(f_byte); e_list.append(e); t_list.append(t)
     S = sum(e_list)
     # e/S：分子分母同为 Q12，4096 自动约掉；Python 的 / 是真除法 → 结果已是 float 概率
-    p_approx = [e / S for e in e_list]
+    p_approx = []
+    for e in e_list:
+        p_approx.append(e / S)
     debug = dict(t=t_list, n=n_list, f=f_list, fb=fb_list, e=e_list, S=S)
     return p_approx, debug
 
 
 def float_softmax(logits):
     xmax = max(logits)
-    exps = [math.exp(x - xmax) for x in logits]
+
+    exps = []
+    for x in logits:
+        exps.append(math.exp(x - xmax))
+
     s = sum(exps)
-    return [e / s for e in exps]
+
+    p = []
+    for e in exps:
+        p.append(e / s)
+    return p
 
 
 def main():
