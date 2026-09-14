@@ -10,4 +10,12 @@ build_android/
 tvm-src/
 mnn-src/
 # mlir-src/
+
+# Python 缓存（不要提交）
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
 技术名词表.md
