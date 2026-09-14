@@ -36,6 +36,7 @@ softmax 的 `exp` 在无 FPU / 超越函数昂贵的环境（T41 NPU、Cortex-A 
 | 8 | `step8_reciprocal.py` | 1/x 查倒数表 + 牛顿迭代 | 查表给初值 + 迭代二次收敛，2 轮到 float 全精度 |
 | 9 | `step9_linear_counterexample.py` | y=2x+1 建表反例 | 建表三步模板；线性函数查表纯属浪费 |
 | 10 | `step10_rsqrt.py` | 1/√x 查表 + 牛顿迭代 | 指数减半（拆偶数）+ 平方收敛（系数 3/2），全程无除法；末尾 `trace_one(4.1)` 逐步打印完整链路 |
+| 11 | `step11_ln.py` | ln x 查表（range reduction 是**加法**） | `ln x = ln m + e·ln2`；表域 [1,2) → 索引**零乘法**；**ln2 的量化误差会被 e 线性放大**，必须单独提精度 |
 
 > ⚠️ **step10 勘误（2026-09-14）**：早期版本头部注释写"误差**立方**衰减、比 1/x 更快"，**是错的**。
 > rsqrt 的牛顿迭代是**平方收敛** $d\to-\tfrac32d^2$，系数 $3/2$ 比 1/x 的 $1$ **更差**。
@@ -83,14 +84,36 @@ exp(x) 太贵（无 FPU）
 
 - [x] **1：exp/softmax 查表**：step1~step5 全部跑通（range reduction → 建表 → 插值 → 完整流水 → 误差数学）
 - [x] **1.5：激活函数查表适用性**：见 `激活函数查表适用性.md`（判断清单 + 逐函数结论，全家桶的前置导航）
-- [ ] **2：超越函数全家桶**：sigmoid/tanh（softmax 的变体）、`ln`、`1/x`、`rsqrt`——
+- [x] **2：超越函数全家桶**：sigmoid/tanh（softmax 的变体）、`ln`、`1/x`、`rsqrt`——
       各自的 range reduction 不同（倒数查表、对数查表配合），统一方法学
       （✅ sigmoid：`step6_sigmoid.py`；✅ tanh：`step7_tanh.py` 对比；
-       ✅ 1/x：`step8_reciprocal.py`；✅ rsqrt：`step10_rsqrt.py` 查表+牛顿）
-- [ ] **定点除法**：softmax 分母的 `1/S` 也查倒数表 + 一次乘法修正（牛顿迭代）
-      （1/x 已做 `step8_reciprocal.py`，是它的地基）
-- [ ] **block floating point**：logits 动态范围大时按块统一指数，避免逐项下溢
-- [ ] **非均匀分段**：曲率大的区间（exp 右端）段更密，同表项数误差更低（见 step5 结尾）
+       ✅ 1/x：`step8_reciprocal.py`；✅ rsqrt：`step10_rsqrt.py` 查表+牛顿；
+       ✅ ln：`step11_ln.py` 加法型 range reduction + 常数精度约束）
+
+---
+
+## 三类 range reduction 汇总（全家桶收口）
+
+跑完 step1~step11 后，可以把所有函数的 range reduction 归成三类：
+
+| 类型 | 形式 | 例子 | 关键动作 |
+|---|---|---|---|
+| **乘法型** | $f(x)=f(m)\cdot 2^{n}$ | exp、sigmoid、tanh | $n$ 变**移位** |
+| **加法型** | $f(x)=f(m)+e\cdot\ln 2$ | **ln** | $e\cdot\ln 2$ 变**乘法**（常数精度是瓶颈）|
+| **幂型** | $f(x)=f(m)\cdot 2^{-e/2}$ | 1/√x（rsqrt） | 指数**减半**，须先偶化 $e$ |
+
+**互补规律**：exp 用移位把指数"乘出去"，ln 用乘法把指数"加出去"——两者严格互逆，
+所以 `step11` 的闭环（$\exp(\ln x)\approx x$）能反过来验证 `step1~5` 的 exp 流水。
+
+**另一个分类维度**（要不要迭代）：
+
+| 类型 | 做法 | 例子 |
+|---|---|---|
+| 直接够用 | 查表 + 插值 | exp、sigmoid、tanh、**ln** |
+| 必须迭代 | 查表给初值 + 牛顿 | 1/x、rsqrt |
+
+判据是**函数本身好不好用多项式/直线凑**：初值够近就不必迭代；像 $1/x$、$1/\sqrt m$
+这种"曲率在整段都不小"的，靠插值精度上不去，必须加牛顿。
 
 ---
 

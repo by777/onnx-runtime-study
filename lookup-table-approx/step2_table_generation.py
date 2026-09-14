@@ -35,7 +35,8 @@ def main():
 
     # ---------- 2. 实际生成 + 观察规律 ----------
     table = gen_exp2_table()
-    print(f"\n[2] gen_exp2_table() 直接生成: {table}")
+    print(f"\n[2] gen_exp2_table() 直接生成:")
+    print(f"    {table}")
     print(f"    表项数 = {SEGS}+1 = {len(table)}（8 段共享端点）")
     ratios = []
     for i in range(len(table) - 1):
