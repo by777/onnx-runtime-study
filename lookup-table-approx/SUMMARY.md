@@ -90,6 +90,12 @@ exp(x) 太贵（无 FPU）
        ✅ 1/x：`step8_reciprocal.py`；✅ rsqrt：`step10_rsqrt.py` 查表+牛顿；
        ✅ ln：`step11_ln.py` 加法型 range reduction + 常数精度约束）
 
+- [ ] **定点除法**：softmax 分母的 `1/S` 也查倒数表 + 一次乘法修正（牛顿迭代）
+      （1/x 已做 `step8_reciprocal.py`，是它的地基）
+- [ ] **block floating point**：logits 动态范围大时按块统一指数，避免逐项下溢
+- [ ] **非均匀分段**：曲率大的区间（exp 右端、ln 左端）段更密，同表项数误差更低
+      （见 step5 结尾）
+
 ---
 
 ## 三类 range reduction 汇总（全家桶收口）
