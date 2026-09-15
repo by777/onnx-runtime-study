@@ -38,6 +38,7 @@ softmax 的 `exp` 在无 FPU / 超越函数昂贵的环境（T41 NPU、Cortex-A 
 | 10 | `step10_rsqrt.py` | 1/√x 查表 + 牛顿迭代 | 指数减半（拆偶数）+ 平方收敛（系数 3/2），全程无除法；末尾 `trace_one(4.1)` 逐步打印完整链路 |
 | 11 | `step11_ln.py` | ln x 查表（range reduction 是**加法**） | `ln x = ln m + e·ln2`；表域 [1,2) → 索引**零乘法**；**ln2 的量化误差会被 e 线性放大**，必须单独提精度 |
 | 12 | `step12_nonuniform.py` | **非均匀分段**到底值不值得？ | 收益由**曲率变化比**决定；ln 只差 4 倍 → **加段数完胜非均匀**；几何最优网格撞上 8bit **编码冲突**；非均匀压低了内点误差却被**端点截断**吃掉 |
+| 13 | `step13_softmax_div.py` | 补上 step4 的缺口：`p_i=e_i/S` 的**定点除法** | 把 **N 次除法**换成 **1 次倒数 + N 次乘法**（约快 29 倍）；倒数用 range reduction + 查表 + 2 轮牛顿（内部 Q30）；索引**零乘法**；**Σp 截断偏差**与舍入的"偏差 vs 方差"取舍 |
 
 > ⚠️ **step10 勘误（2026-09-14）**：早期版本头部注释写"误差**立方**衰减、比 1/x 更快"，**是错的**。
 > rsqrt 的牛顿迭代是**平方收敛** $d\to-\tfrac32d^2$，系数 $3/2$ 比 1/x 的 $1$ **更差**。
@@ -91,8 +92,10 @@ exp(x) 太贵（无 FPU）
        ✅ 1/x：`step8_reciprocal.py`；✅ rsqrt：`step10_rsqrt.py` 查表+牛顿；
        ✅ ln：`step11_ln.py` 加法型 range reduction + 常数精度约束）
 
-- [ ] **定点除法**：softmax 分母的 `1/S` 也查倒数表 + 一次乘法修正（牛顿迭代）
-      （1/x 已做 `step8_reciprocal.py`，是它的地基）
+- [x] **定点除法**：softmax 分母的 `1/S` 也查倒数表 + 牛顿迭代
+      （✅ `step13_softmax_div.py`：range reduction（bit_length 拆整数 S）+
+      倒查表 + 2 轮牛顿（内部 Q30）→ p_i 用乘法。**至此 softmax 全程无除法**。
+      附带发现：截断让 Σp 系统性 < 1，舍入能修偏差但重分配单点误差）
 - [ ] **block floating point**：logits 动态范围大时按块统一指数，避免逐项下溢
 - [x] **非均匀分段**：曲率大的区间段更密，同表项数误差更低
       （✅ `step12_nonuniform.py`：结论是【对 ln 不划算】—— 曲率变化比只有 4，
