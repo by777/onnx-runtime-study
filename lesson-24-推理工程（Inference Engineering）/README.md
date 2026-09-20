@@ -54,6 +54,7 @@
 | 优先级 | 章节 | 理由 |
 |---|---|---|
 | 🔴 **精读** | [03 模型与瓶颈计算](03_模型机制与瓶颈计算.md) | 补性能建模短板，全课的定量核心 |
+| 🔴 **精读** | [03a Prefill 与 Decode 详解](03a_Prefill与Decode详解.md) | ⭐ **03 章的慢放版**：卡在 prefill/decode 上就看这份（由浅入深 5 层） |
 | 🔴 **精读** | [06 量化](06_量化_动态范围与粒度.md) | 补量化理论短板，和 Lesson 21/22 打通 |
 | 🟡 值得读 | [05 软件栈](05_软件栈_CUDA到推理引擎.md) | kernel 融合/kernel 选择 = 你在 T41 干的手工活 |
 | 🟡 值得读 | [04 硬件](04_硬件_GPU与本地推理.md) | 3.5 节点名 Hexagon，正是你的领域 |
@@ -67,10 +68,17 @@
 ```bash
 cd lesson-24-推理工程（Inference Engineering）
 
-python3 roofline.py                    # 各代 GPU 的 ridge + 你的 NPU 对比
-python3 roofline.py --gpu H100         # 单卡详细：attention 在什么序列长度越过分界
-python3 quant_demo.py                  # 动态范围 vs 粒度：误差为什么这么分布
+python3 prefill_vs_decode.py            # ⭐ 先看这个：复用率视角，讲透为什么 prefill/decode 瓶颈不同
+python3 prefill_vs_decode.py --trace    # 一次请求的完整流程：prefill 一次 + decode N 次
+python3 measure_ridge.py                # ⭐ 实测【你这台机器】的 ridge —— 上面几个都是纸面复算，这个是真尺子
+python3 roofline.py                     # 各代 GPU 的 ridge + 你的 NPU 对比
+python3 roofline.py --gpu H100          # 单卡详细：未融合 vs 融合 attention 的算术强度
+python3 quant_demo.py                   # 动态范围 vs 粒度：误差为什么这么分布
 ```
+
+> 💡 **`measure_ridge.py` 和其他几个的区别**：其他脚本算的是**公式的输出**，它测的是**硬件的表现**。
+> 本机（i9-14900K）实测：带宽 50.8 GB/s、FP32 算力 1546 GFLOPS、**ridge 30.4 ops/byte**。
+> 想测你的板子，改 `--custom` 那类参数即可。
 
 ---
 
@@ -82,6 +90,7 @@ python3 quant_demo.py                  # 动态范围 vs 粒度：误差为什�
 | 01 | [全景：三层与六技术](01_全景_三层与六技术.md) | Ch0 | 全书骨架：runtime/infrastructure/tooling + 六个技术 |
 | 02 | [前置决策：度量与模型选择](02_前置决策_度量与模型选择.md) | Ch1 | 动手之前先想清楚：TTFT/TPS、百分位、共享 vs 专用 |
 | 03 | [模型机制与瓶颈计算](03_模型机制与瓶颈计算.md) | Ch2 | ⭐ roofline 推导：prefill 算力受限、decode 带宽受限 |
+| 03a | [Prefill 与 Decode 详解](03a_Prefill与Decode详解.md) | Ch2+Ch5.5 | ⭐ **专题慢放版**：五层递进，从"为什么要分两段"推到"芯片为什么做两套"；含本机 ridge 实测 |
 | 04 | [硬件：GPU 与本地推理](04_硬件_GPU与本地推理.md) | Ch3 | 读懂 spec sheet；3.5 节 = 你的主场 |
 | 05 | [软件栈：CUDA 到推理引擎](05_软件栈_CUDA到推理引擎.md) | Ch4 | kernel 融合、safetensors vs ONNX、三大引擎 |
 | 06 | [量化：动态范围与粒度](06_量化_动态范围与粒度.md) | Ch5.1 | ⭐ 浮点为何胜整数；量化顺序与质量验证 |
