@@ -112,7 +112,7 @@ python3 quant_demo.py                   # 动态范围 vs 粒度：误差为什�
 | [05](05_软件栈_CUDA到推理引擎.md) ONNX/TensorRT | **Lesson 01-12**（ORT 自定义算子） | 本课给出行业判断：中间表示路线正在被"引擎直连"分流 |
 | [06](06_量化_动态范围与粒度.md) 量化 | **Lesson 21 / 22** | Lesson 21 是公式侧（scale/zero_point），本课是格式侧（FP8/MXFP8/NVFP4） |
 | [06](06_量化_动态范围与粒度.md) 量化 | **Lesson 22 实验C** | MNN 的 `alpha` per-channel scale ↔ 本课的 granularity |
-| [08](08_多模态_语音与生成.md) ASR | **KWS / ECNR（移远）** | 200ms 往返目标、VAD 分块、RTF 度量 |
+| [08](08_多模态_语音与生成.md) ASR | **KWS / ECNR（前司语音线）** | 200ms 往返目标、VAD 分块、RTF 度量 |
 | [04](04_硬件_GPU与本地推理.md) 移动推理 | **Hexagon NPU / QNN** | 原书点名 Qualcomm Hexagon 作为移动加速器 |
 | [04](04_硬件_GPU与本地推理.md) 其他加速器 | **T41 NPU** | 原书列的"专用 ASIC 下注方向"可以对照 T41 定位 |
 
